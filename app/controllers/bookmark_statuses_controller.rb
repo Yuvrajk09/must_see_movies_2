@@ -3,7 +3,8 @@ class BookmarkStatusesController < ApplicationController
 
   # GET /bookmark_statuses
   def index
-    @bookmark_statuses = BookmarkStatus.page(params[:page]).per(10)
+    @q = BookmarkStatus.ransack(params[:q])
+    @bookmark_statuses = @q.result(:distinct => true).includes(:bookmark, :movie).page(params[:page]).per(10)
   end
 
   # GET /bookmark_statuses/1

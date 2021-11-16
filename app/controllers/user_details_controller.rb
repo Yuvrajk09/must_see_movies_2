@@ -3,7 +3,8 @@ class UserDetailsController < ApplicationController
 
   # GET /user_details
   def index
-    @user_details = UserDetail.page(params[:page]).per(10)
+    @q = UserDetail.ransack(params[:q])
+    @user_details = @q.result(:distinct => true).includes(:movies, :bookmark_statuses, :review_details).page(params[:page]).per(10)
   end
 
   # GET /user_details/1

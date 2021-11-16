@@ -3,7 +3,8 @@ class ReviewDetailsController < ApplicationController
 
   # GET /review_details
   def index
-    @review_details = ReviewDetail.page(params[:page]).per(10)
+    @q = ReviewDetail.ransack(params[:q])
+    @review_details = @q.result(:distinct => true).includes(:reviews, :movie).page(params[:page]).per(10)
   end
 
   # GET /review_details/1

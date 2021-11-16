@@ -3,7 +3,8 @@ class DirectorDetailsController < ApplicationController
 
   # GET /director_details
   def index
-    @director_details = DirectorDetail.page(params[:page]).per(10)
+    @q = DirectorDetail.ransack(params[:q])
+    @director_details = @q.result(:distinct => true).includes(:director).page(params[:page]).per(10)
   end
 
   # GET /director_details/1
