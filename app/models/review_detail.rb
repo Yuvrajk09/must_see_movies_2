@@ -1,21 +1,18 @@
 class ReviewDetail < ApplicationRecord
   # Direct associations
 
-  belongs_to :reviews,
-             class_name: "Movie",
-             foreign_key: "review_id"
+  belongs_to :movie
+
+  belongs_to :user,
+             class_name: "UserDetail"
 
   # Indirect associations
-
-  has_one    :movie,
-             through: :reviews,
-             source: :movie
 
   # Validations
 
   # Scopes
 
   def to_s
-    reviews.to_s
+    movie.to_s
   end
 end

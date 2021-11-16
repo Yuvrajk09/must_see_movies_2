@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Users
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @movie.users.each do |user_detail| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/user_details/<%= user_detail.id %>">
+          <%= user_detail %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

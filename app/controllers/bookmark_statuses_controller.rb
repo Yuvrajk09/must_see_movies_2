@@ -3,7 +3,7 @@ class BookmarkStatusesController < ApplicationController
 
   def index
     @q = BookmarkStatus.ransack(params[:q])
-    @bookmark_statuses = @q.result(distinct: true).includes(:bookmark,
+    @bookmark_statuses = @q.result(distinct: true).includes(:user,
                                                             :movie).page(params[:page]).per(10)
   end
 
@@ -56,6 +56,7 @@ class BookmarkStatusesController < ApplicationController
   end
 
   def bookmark_status_params
-    params.require(:bookmark_status).permit(:bookmark_id, :bookmark_status)
+    params.require(:bookmark_status).permit(:movie_id, :bookmark_status,
+                                            :user_id)
   end
 end

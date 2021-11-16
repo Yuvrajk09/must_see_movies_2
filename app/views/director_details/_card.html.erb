@@ -6,11 +6,7 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Director</dt>
-      <dd>
-        <% if @director_detail.director.present? %>
-          <%= link_to director_detail.director, director_detail.director %>
-        <% end %>
-      </dd>
+      <dd><%= director_detail.director_id %></dd>
 
       <dt>Director name</dt>
       <dd><%= director_detail.director_name %></dd>

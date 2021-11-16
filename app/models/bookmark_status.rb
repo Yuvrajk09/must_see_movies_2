@@ -1,20 +1,18 @@
 class BookmarkStatus < ApplicationRecord
   # Direct associations
 
-  belongs_to :bookmark,
-             class_name: "Movie"
+  belongs_to :movie
+
+  belongs_to :user,
+             class_name: "UserDetail"
 
   # Indirect associations
-
-  has_one    :movie,
-             through: :bookmark,
-             source: :movie
 
   # Validations
 
   # Scopes
 
   def to_s
-    bookmark.to_s
+    movie.to_s
   end
 end

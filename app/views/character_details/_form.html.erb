@@ -1,0 +1,71 @@
+<% was_validated = character_detail.errors.any? %>
+
+<%= form_with(model: character_detail, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <div class="form-group">
+    <% movie_class = "form-control" %>
+    <% movie_was_invalid = character_detail.errors.include?(:movie) %>
+
+    <% if was_validated %>
+      <% if movie_was_invalid %>
+        <% movie_class << " is-invalid" %>
+      <% else %>
+        <% movie_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :movie_id %>
+    <%= f.collection_select :movie_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
+    <% if movie_was_invalid %>
+      <% character_detail.errors.full_messages_for(:movie).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% actor_class = "form-control" %>
+    <% actor_was_invalid = character_detail.errors.include?(:actor) %>
+
+    <% if was_validated %>
+      <% if actor_was_invalid %>
+        <% actor_class << " is-invalid" %>
+      <% else %>
+        <% actor_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :actor_id %>
+    <%= f.collection_select :actor_id, ActorDetail.all, :id, :to_s, {}, class: "form-control" %>
+    <% if actor_was_invalid %>
+      <% character_detail.errors.full_messages_for(:actor).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% character_name_class = "form-control" %>
+    <% character_name_was_invalid = character_detail.errors.include?(:character_name) %>
+
+    <% if was_validated %>
+      <% if character_name_was_invalid %>
+        <% character_name_class << " is-invalid" %>
+      <% else %>
+        <% character_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :character_name %>
+    <%= f.text_field :character_name, class: character_name_class, placeholder: "Enter character name" %>
+    <% if character_name_was_invalid %>
+      <% character_detail.errors.full_messages_for(:character_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

@@ -3,14 +3,14 @@ class MoviesController < ApplicationController
 
   def index
     @q = Movie.ransack(params[:q])
-    @movies = @q.result(distinct: true).includes(:movie, :director_detail,
-                                                 :actor_details, :review_details, :bookmark_statuses).page(params[:page]).per(10)
+    @movies = @q.result(distinct: true).includes(:review_details,
+                                                 :bookmark_statuses, :character_details, :director, :actors, :users, :users_reviews).page(params[:page]).per(10)
   end
 
   def show
+    @character_detail = CharacterDetail.new
     @bookmark_status = BookmarkStatus.new
     @review_detail = ReviewDetail.new
-    @actor_detail = ActorDetail.new
   end
 
   def new
@@ -59,7 +59,7 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:movie_id, :movie_name, :movie_description,
-                                  :movie_duration, :movie_year)
+    params.require(:movie).permit(:user_id, :movie_name, :movie_description,
+                                  :movie_duration, :movie_year, :movie_image, :director_id)
   end
 end

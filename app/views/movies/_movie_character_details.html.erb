@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Character Details
+
+    <a data-toggle="collapse" href="#movie_character_details_new_form">
+      Add character detail
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @movie.character_details.each do |character_detail| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <%= link_to character_detail, character_detail %>
+
+        <%= link_to character_detail, method: :delete, data: { confirm: "Do you really want to delete this character_detail" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="movie_character_details_new_form">
+        <%= render partial: "movies/movie_character_details_new_form" %>
+      </div>
+    </div>
+
+  </ul>
+</div>

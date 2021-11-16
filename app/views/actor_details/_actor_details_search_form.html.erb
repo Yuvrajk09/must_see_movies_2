@@ -2,6 +2,18 @@
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
+    <%= f.label :actor_id, "Actor" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :actor_id_gteq, :class => "form-control", :placeholder => "Actor greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :actor_id_lteq, :class => "form-control", :placeholder => "Actor less than or equal to" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :actor_image_cont, "Actor image contains" %>
     <%= f.text_field :actor_image_cont, :class => "form-control", :placeholder => "Actor image contains" %>
   </div>
@@ -62,6 +74,17 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :user_id, "Movie User" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :movies_user_id_gteq, :class => "form-control", :placeholder => "Movie User greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :movies_user_id_lteq, :class => "form-control", :placeholder => "Movie User less than or equal to" %>
+      </div>
+    </div>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>

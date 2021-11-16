@@ -10,8 +10,8 @@ class DirectorDetailResource < ApplicationResource
 
   # Direct associations
 
-  belongs_to :director,
-             resource: MovieResource
+  has_many   :movies,
+             foreign_key: :director_id
 
   # Indirect associations
 end

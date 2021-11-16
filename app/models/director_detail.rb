@@ -1,8 +1,9 @@
 class DirectorDetail < ApplicationRecord
   # Direct associations
 
-  belongs_to :director,
-             class_name: "Movie"
+  has_many   :movies,
+             foreign_key: "director_id",
+             dependent: :destroy
 
   # Indirect associations
 
@@ -11,6 +12,6 @@ class DirectorDetail < ApplicationRecord
   # Scopes
 
   def to_s
-    director.to_s
+    director_id
   end
 end

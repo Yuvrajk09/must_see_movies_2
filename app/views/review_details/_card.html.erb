@@ -5,10 +5,10 @@
 
   <div class="card-body">
     <dl class="mb-1">
-      <dt>Review</dt>
+      <dt>Movie</dt>
       <dd>
-        <% if @review_detail.reviews.present? %>
-          <%= link_to review_detail.reviews, review_detail.reviews %>
+        <% if @review_detail.movie.present? %>
+          <%= link_to review_detail.movie, review_detail.movie %>
         <% end %>
       </dd>
 
@@ -17,6 +17,13 @@
 
       <dt>Star ratings</dt>
       <dd><%= review_detail.star_ratings %></dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @review_detail.user.present? %>
+          <%= link_to review_detail.user, review_detail.user %>
+        <% end %>
+      </dd>
 
     </dl>
 

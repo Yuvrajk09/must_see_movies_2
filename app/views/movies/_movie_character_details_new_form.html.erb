@@ -1,0 +1,18 @@
+<%= form_with(model: @character_detail, local: true) do |f| %>
+
+  <%= f.hidden_field :movie_id, value: @movie.id %>
+
+  <div class="form-group">
+    <%= f.label :actor_id %>
+
+    <%= f.collection_select :actor_id, ActorDetail.all, :id, :to_s, {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :character_name %>
+
+    <%= f.text_field :character_name, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create character detail", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

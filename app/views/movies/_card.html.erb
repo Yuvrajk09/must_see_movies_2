@@ -5,12 +5,8 @@
 
   <div class="card-body">
     <dl class="mb-1">
-      <dt>Movie</dt>
-      <dd>
-        <% if @movie.movie.present? %>
-          <%= link_to movie.movie, movie.movie %>
-        <% end %>
-      </dd>
+      <dt>User</dt>
+      <dd><%= movie.user_id %></dd>
 
       <dt>Movie name</dt>
       <dd><%= movie.movie_name %></dd>
@@ -23,6 +19,16 @@
 
       <dt>Movie year</dt>
       <dd><%= movie.movie_year %></dd>
+
+      <dt>Movie image</dt>
+      <dd><%= movie.movie_image %></dd>
+
+      <dt>Director</dt>
+      <dd>
+        <% if @movie.director.present? %>
+          <%= link_to movie.director, movie.director %>
+        <% end %>
+      </dd>
 
     </dl>
 

@@ -2,6 +2,23 @@
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
+    <%= f.label :user_id, "User" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :movie_image_cont, "Movie image contains" %>
+    <%= f.text_field :movie_image_cont, :class => "form-control", :placeholder => "Movie image contains" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :movie_year_cont, "Movie year contains" %>
     <%= f.text_field :movie_year_cont, :class => "form-control", :placeholder => "Movie year contains" %>
   </div>
@@ -63,8 +80,37 @@
 
 
   <div class="form-group">
-    <%= f.label :movie_user_email_cont, "Movie user_email contains" %>
-    <%= f.text_field :movie_user_email_cont, :class => "form-control", :placeholder => "Movie user_email contains" %>
+    <%= f.label :director_id, "DirectorDetail Director" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :director_director_id_gteq, :class => "form-control", :placeholder => "DirectorDetail Director greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :director_director_id_lteq, :class => "form-control", :placeholder => "DirectorDetail Director less than or equal to" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :actor_id, "ActorDetail Actor" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :actors_actor_id_gteq, :class => "form-control", :placeholder => "ActorDetail Actor greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :actors_actor_id_lteq, :class => "form-control", :placeholder => "ActorDetail Actor less than or equal to" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :users_user_email_cont, "Users user_email contains" %>
+    <%= f.text_field :users_user_email_cont, :class => "form-control", :placeholder => "Users user_email contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :users_reviews_user_email_cont, "Users reviews user_email contains" %>
+    <%= f.text_field :users_reviews_user_email_cont, :class => "form-control", :placeholder => "Users reviews user_email contains" %>
   </div>
 
 

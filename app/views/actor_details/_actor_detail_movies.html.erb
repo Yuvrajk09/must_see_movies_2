@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
-    Movie
+    Movies
   </div>
 
   <ul class="list-group list-group-flush">
-    <% @review_detail.movie.each do |user_detail| %>
+    <% @actor_detail.movies.each do |movie| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/user_details/<%= user_detail.id %>">
-          <%= user_detail %>
+        <a href="/movies/<%= movie.id %>">
+          <%= movie %>
         </a>
 
       </li>

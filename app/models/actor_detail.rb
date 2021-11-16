@@ -1,17 +1,21 @@
 class ActorDetail < ApplicationRecord
   # Direct associations
 
-  belongs_to :actors,
-             class_name: "Movie",
-             foreign_key: "actor_id"
+  has_many   :character_details,
+             foreign_key: "actor_id",
+             dependent: :destroy
 
   # Indirect associations
+
+  has_many   :movies,
+             through: :character_details,
+             source: :movie
 
   # Validations
 
   # Scopes
 
   def to_s
-    actors.to_s
+    actor_id
   end
 end

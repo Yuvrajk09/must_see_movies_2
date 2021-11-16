@@ -3,10 +3,12 @@ class DirectorDetailsController < ApplicationController
 
   def index
     @q = DirectorDetail.ransack(params[:q])
-    @director_details = @q.result(distinct: true).includes(:director).page(params[:page]).per(10)
+    @director_details = @q.result(distinct: true).includes(:movies).page(params[:page]).per(10)
   end
 
-  def show; end
+  def show
+    @movie = Movie.new
+  end
 
   def new
     @director_detail = DirectorDetail.new
