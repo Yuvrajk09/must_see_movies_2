@@ -10,6 +10,10 @@ class ActorDetailResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :actors,
+             resource: MovieResource,
+             foreign_key: :actor_id
+
   # Indirect associations
 
 end

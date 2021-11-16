@@ -10,6 +10,9 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :actor_details,
+             foreign_key: :actor_id
+
   has_one    :director_detail,
              foreign_key: :director_id
 
