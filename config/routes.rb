@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "user_details#index"
   resources :bookmark_statuses
   resources :review_details
