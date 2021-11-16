@@ -1,17 +1,29 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Bookmark Statuses
+
+    <a data-toggle="collapse" href="#user_detail_bookmark_statuses_new_form">
+      Add bookmark status
+    </a>
   </div>
 
   <ul class="list-group list-group-flush">
     <% @user_detail.bookmark_statuses.each do |bookmark_status| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/bookmark_statuses/<%= bookmark_status.id %>">
-          <%= bookmark_status %>
-        </a>
+        <%= link_to bookmark_status, bookmark_status %>
+
+        <%= link_to bookmark_status, method: :delete, data: { confirm: "Do you really want to delete this bookmark_status" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
 
       </li>
     <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="user_detail_bookmark_statuses_new_form">
+        <%= render partial: "user_details/user_detail_bookmark_statuses_new_form" %>
+      </div>
+    </div>
 
   </ul>
 </div>

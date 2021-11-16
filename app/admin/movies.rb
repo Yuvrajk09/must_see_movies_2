@@ -1,6 +1,6 @@
 ActiveAdmin.register Movie do
-  permit_params :movie_id, :movie_name, :movie_description, :movie_duration,
-                :movie_year
+  permit_params :user_id, :movie_name, :movie_description, :movie_duration,
+                :movie_year, :movie_image, :director_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

@@ -3,10 +3,13 @@ class ActorDetailsController < ApplicationController
 
   def index
     @q = ActorDetail.ransack(params[:q])
-    @actor_details = @q.result(distinct: true).includes(:actors).page(params[:page]).per(10)
+    @actor_details = @q.result(distinct: true).includes(:character_details,
+                                                        :movies).page(params[:page]).per(10)
   end
 
-  def show; end
+  def show
+    @character_detail = CharacterDetail.new
+  end
 
   def new
     @actor_detail = ActorDetail.new
@@ -18,12 +21,8 @@ class ActorDetailsController < ApplicationController
     @actor_detail = ActorDetail.new(actor_detail_params)
 
     if @actor_detail.save
-      message = "ActorDetail was successfully created."
-      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referer, notice: message
-      else
-        redirect_to @actor_detail, notice: message
-      end
+      redirect_to @actor_detail,
+                  notice: "Actor detail was successfully created."
     else
       render :new
     end
@@ -40,12 +39,8 @@ class ActorDetailsController < ApplicationController
 
   def destroy
     @actor_detail.destroy
-    message = "ActorDetail was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referer, notice: message
-    else
-      redirect_to actor_details_url, notice: message
-    end
+    redirect_to actor_details_url,
+                notice: "Actor detail was successfully destroyed."
   end
 
   private

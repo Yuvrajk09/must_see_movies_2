@@ -3,7 +3,7 @@ class ReviewDetailsController < ApplicationController
 
   def index
     @q = ReviewDetail.ransack(params[:q])
-    @review_details = @q.result(distinct: true).includes(:reviews,
+    @review_details = @q.result(distinct: true).includes(:user,
                                                          :movie).page(params[:page]).per(10)
   end
 
@@ -56,6 +56,7 @@ class ReviewDetailsController < ApplicationController
   end
 
   def review_detail_params
-    params.require(:review_detail).permit(:review_id, :review, :star_ratings)
+    params.require(:review_detail).permit(:movie_id, :review, :star_ratings,
+                                          :user_id)
   end
 end

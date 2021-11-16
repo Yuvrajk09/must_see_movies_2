@@ -2,21 +2,21 @@
 
 <%= form_with(model: movie, local: true, novalidate: true, class: "mb-3") do |f| %>
   <div class="form-group">
-    <% movie_class = "form-control" %>
-    <% movie_was_invalid = movie.errors.include?(:movie) %>
+    <% user_class = "form-control" %>
+    <% user_was_invalid = movie.errors.include?(:user) %>
 
     <% if was_validated %>
-      <% if movie_was_invalid %>
-        <% movie_class << " is-invalid" %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
       <% else %>
-        <% movie_class << " is-valid" %>
+        <% user_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :movie_id %>
-    <%= f.collection_select :movie_id, UserDetail.all, :id, :to_s, {}, class: "form-control" %>
-    <% if movie_was_invalid %>
-      <% movie.errors.full_messages_for(:movie).each do |message| %>
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <% if user_was_invalid %>
+      <% movie.errors.full_messages_for(:user).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>
@@ -105,6 +105,50 @@
     <%= f.text_field :movie_year, class: movie_year_class, placeholder: "Enter movie year" %>
     <% if movie_year_was_invalid %>
       <% movie.errors.full_messages_for(:movie_year).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% movie_image_class = "form-control" %>
+    <% movie_image_was_invalid = movie.errors.include?(:movie_image) %>
+
+    <% if was_validated %>
+      <% if movie_image_was_invalid %>
+        <% movie_image_class << " is-invalid" %>
+      <% else %>
+        <% movie_image_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :movie_image %>
+    <%= f.text_field :movie_image, class: movie_image_class, placeholder: "Enter movie image" %>
+    <% if movie_image_was_invalid %>
+      <% movie.errors.full_messages_for(:movie_image).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% director_class = "form-control" %>
+    <% director_was_invalid = movie.errors.include?(:director) %>
+
+    <% if was_validated %>
+      <% if director_was_invalid %>
+        <% director_class << " is-invalid" %>
+      <% else %>
+        <% director_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :director_id %>
+    <%= f.collection_select :director_id, DirectorDetail.all, :id, :to_s, {}, class: "form-control" %>
+    <% if director_was_invalid %>
+      <% movie.errors.full_messages_for(:director).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

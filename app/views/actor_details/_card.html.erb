@@ -6,11 +6,7 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Actor</dt>
-      <dd>
-        <% if @actor_detail.actors.present? %>
-          <%= link_to actor_detail.actors, actor_detail.actors %>
-        <% end %>
-      </dd>
+      <dd><%= actor_detail.actor_id %></dd>
 
       <dt>Actor name</dt>
       <dd><%= actor_detail.actor_name %></dd>

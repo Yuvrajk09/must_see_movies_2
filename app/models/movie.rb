@@ -1,32 +1,37 @@
 class Movie < ApplicationRecord
   # Direct associations
 
+  belongs_to :director,
+             class_name: "DirectorDetail"
+
+  has_many   :character_details,
+             dependent: :destroy
+
   has_many   :bookmark_statuses,
-             foreign_key: "bookmark_id",
              dependent: :destroy
 
   has_many   :review_details,
-             foreign_key: "review_id",
              dependent: :destroy
-
-  has_many   :actor_details,
-             foreign_key: "actor_id",
-             dependent: :destroy
-
-  has_one    :director_detail,
-             foreign_key: "director_id",
-             dependent: :destroy
-
-  belongs_to :movie,
-             class_name: "UserDetail"
 
   # Indirect associations
+
+  has_many   :users_reviews,
+             through: :review_details,
+             source: :user
+
+  has_many   :users,
+             through: :bookmark_statuses,
+             source: :user
+
+  has_many   :actors,
+             through: :character_details,
+             source: :actor
 
   # Validations
 
   # Scopes
 
   def to_s
-    movie.to_s
+    user_id
   end
 end

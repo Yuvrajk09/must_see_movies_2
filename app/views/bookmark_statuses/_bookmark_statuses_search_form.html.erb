@@ -48,8 +48,20 @@
 
 
   <div class="form-group">
-    <%= f.label :movie_user_email_cont, "Movie user_email contains" %>
-    <%= f.text_field :movie_user_email_cont, :class => "form-control", :placeholder => "Movie user_email contains" %>
+    <%= f.label :user_user_email_cont, "User user_email contains" %>
+    <%= f.text_field :user_user_email_cont, :class => "form-control", :placeholder => "User user_email contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_id, "Movie User" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :movie_user_id_gteq, :class => "form-control", :placeholder => "Movie User greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :movie_user_id_lteq, :class => "form-control", :placeholder => "Movie User less than or equal to" %>
+      </div>
+    </div>
   </div>
 
 

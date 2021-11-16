@@ -1,11 +1,17 @@
 <%= form_with(model: @bookmark_status, local: true) do |f| %>
 
-  <%= f.hidden_field :bookmark_id, value: @movie.id %>
+  <%= f.hidden_field :movie_id, value: @movie.id %>
 
   <div class="form-group">
     <%= f.label :bookmark_status %>
 
     <%= f.text_field :bookmark_status, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_id %>
+
+    <%= f.collection_select :user_id, UserDetail.all, :id, :to_s, {}, class: "form-control" %>
   </div>
 
   <%= f.submit "Create bookmark status", class: "btn btn-block btn-outline-secondary" %>

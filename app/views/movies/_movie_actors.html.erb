@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Actors
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @movie.actors.each do |actor_detail| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/actor_details/<%= actor_detail.id %>">
+          <%= actor_detail %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

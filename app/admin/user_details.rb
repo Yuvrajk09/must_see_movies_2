@@ -1,5 +1,5 @@
 ActiveAdmin.register UserDetail do
-  permit_params :user_email, :user_id, :username, :password
+  permit_params :user_email, :username, :password
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

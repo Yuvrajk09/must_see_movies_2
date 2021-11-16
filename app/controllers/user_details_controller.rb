@@ -3,12 +3,13 @@ class UserDetailsController < ApplicationController
 
   def index
     @q = UserDetail.ransack(params[:q])
-    @user_details = @q.result(distinct: true).includes(:movies,
-                                                       :bookmark_statuses, :review_details).page(params[:page]).per(10)
+    @user_details = @q.result(distinct: true).includes(:bookmark_statuses,
+                                                       :review_details, :movies_bookmarks, :movies_reviews).page(params[:page]).per(10)
   end
 
   def show
-    @movie = Movie.new
+    @review_detail = ReviewDetail.new
+    @bookmark_status = BookmarkStatus.new
   end
 
   def new
@@ -48,7 +49,6 @@ class UserDetailsController < ApplicationController
   end
 
   def user_detail_params
-    params.require(:user_detail).permit(:user_email, :user_id, :username,
-                                        :password)
+    params.require(:user_detail).permit(:user_email, :username, :password)
   end
 end

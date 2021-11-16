@@ -2,22 +2,16 @@ class BookmarkStatusResource < ApplicationResource
   attribute :id, :integer, writable: false
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
-  attribute :bookmark_id, :integer
+  attribute :movie_id, :integer
   attribute :bookmark_status, :string
+  attribute :user_id, :integer
 
   # Direct associations
 
-  belongs_to :bookmark,
-             resource: MovieResource
+  belongs_to :movie
 
-  # Indirect associations
-
-  has_one    :movie,
+  belongs_to :user,
              resource: UserDetailResource
 
-  filter :movie_id, :integer do
-    eq do |scope, value|
-      scope.eager_load(:movie).where(movies: { movie_id: value })
-    end
-  end
+  # Indirect associations
 end

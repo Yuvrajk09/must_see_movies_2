@@ -1,0 +1,24 @@
+<%= form_with(model: @review_detail, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :movie_id %>
+
+    <%= f.collection_select :movie_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :review %>
+
+    <%= f.text_field :review, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :star_ratings %>
+
+    <%= f.text_field :star_ratings, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: @user_detail.id %>
+
+  <%= f.submit "Create review detail", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

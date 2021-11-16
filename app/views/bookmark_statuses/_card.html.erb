@@ -5,15 +5,22 @@
 
   <div class="card-body">
     <dl class="mb-1">
-      <dt>Bookmark</dt>
+      <dt>Movie</dt>
       <dd>
-        <% if @bookmark_status.bookmark.present? %>
-          <%= link_to bookmark_status.bookmark, bookmark_status.bookmark %>
+        <% if @bookmark_status.movie.present? %>
+          <%= link_to bookmark_status.movie, bookmark_status.movie %>
         <% end %>
       </dd>
 
       <dt>Bookmark status</dt>
       <dd><%= bookmark_status.bookmark_status %></dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @bookmark_status.user.present? %>
+          <%= link_to bookmark_status.user, bookmark_status.user %>
+        <% end %>
+      </dd>
 
     </dl>
 

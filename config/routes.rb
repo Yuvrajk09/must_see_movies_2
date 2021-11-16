@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace,
         defaults: { format: :jsonapi } do
     scope module: "api/v1", as: "api" do
+      resources :character_details
+
       resources :bookmark_statuses
 
       resources :review_details
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   end
   ActiveAdmin.routes(self)
   root to: "user_details#index"
+  resources :character_details
   resources :bookmark_statuses
   resources :review_details
   resources :actor_details

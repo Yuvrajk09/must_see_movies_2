@@ -2,13 +2,13 @@
   <div class="card-header d-flex align-items-center justify-content-between">
     Movies
 
-    <a data-toggle="collapse" href="#user_detail_movies_new_form">
+    <a data-toggle="collapse" href="#director_detail_movies_new_form">
       Add movie
     </a>
   </div>
 
   <ul class="list-group list-group-flush">
-    <% @user_detail.movies.each do |movie| %>
+    <% @director_detail.movies.each do |movie| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
         <%= link_to movie, movie %>
 
@@ -20,8 +20,8 @@
     <% end %>
 
     <div class="card-footer">
-      <div class="collapse" id="user_detail_movies_new_form">
-        <%= render partial: "user_details/user_detail_movies_new_form" %>
+      <div class="collapse" id="director_detail_movies_new_form">
+        <%= render partial: "director_details/director_detail_movies_new_form" %>
       </div>
     </div>
 

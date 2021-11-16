@@ -14,7 +14,7 @@
     <% end %>
 
     <%= f.label :director_id %>
-    <%= f.collection_select :director_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
+    <%= f.number_field :director_id, class: director_class, placeholder: "Enter director" %>
     <% if director_was_invalid %>
       <% director_detail.errors.full_messages_for(:director).each do |message| %>
         <div class="invalid-feedback d-flex">
