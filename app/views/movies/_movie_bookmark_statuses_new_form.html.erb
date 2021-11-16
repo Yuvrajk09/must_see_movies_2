@@ -1,0 +1,22 @@
+<!-- Form bookmark_status start -->
+<%= form_with(model: @bookmark_status, local: true) do |f| %>
+<!-- Form bookmark_status end -->
+
+  <!-- Label and input for bookmark_id start -->
+  <!-- Input for bookmark_id start -->
+  <%= f.hidden_field :bookmark_id, value: @movie.id %>
+  <!-- Input for bookmark_id end -->
+  <!-- Label and input for bookmark_id end -->
+
+  <!-- Label and input for bookmark_status start -->
+  <div class="form-group">
+    <%= f.label :bookmark_status %>
+
+    <!-- Input for bookmark_status start -->
+    <%= f.text_field :bookmark_status, class: "form-control" %>
+    <!-- Input for bookmark_status end -->
+  </div>
+  <!-- Label and input for bookmark_status end -->
+
+  <%= f.submit "Create bookmark status", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

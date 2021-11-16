@@ -8,6 +8,7 @@ class UserDetailsController < ApplicationController
 
   # GET /user_details/1
   def show
+    @movie = Movie.new
   end
 
   # GET /user_details/new

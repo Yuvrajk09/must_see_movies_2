@@ -1,0 +1,52 @@
+<!-- Form movie start -->
+<%= form_with(model: @movie, local: true) do |f| %>
+<!-- Form movie end -->
+
+  <!-- Label and input for movie_id start -->
+  <!-- Input for movie_id start -->
+  <%= f.hidden_field :movie_id, value: @user_detail.id %>
+  <!-- Input for movie_id end -->
+  <!-- Label and input for movie_id end -->
+
+  <!-- Label and input for movie_name start -->
+  <div class="form-group">
+    <%= f.label :movie_name %>
+
+    <!-- Input for movie_name start -->
+    <%= f.text_field :movie_name, class: "form-control" %>
+    <!-- Input for movie_name end -->
+  </div>
+  <!-- Label and input for movie_name end -->
+
+  <!-- Label and input for movie_description start -->
+  <div class="form-group">
+    <%= f.label :movie_description %>
+
+    <!-- Input for movie_description start -->
+    <%= f.text_field :movie_description, class: "form-control" %>
+    <!-- Input for movie_description end -->
+  </div>
+  <!-- Label and input for movie_description end -->
+
+  <!-- Label and input for movie_duration start -->
+  <div class="form-group">
+    <%= f.label :movie_duration %>
+
+    <!-- Input for movie_duration start -->
+    <%= f.text_field :movie_duration, class: "form-control" %>
+    <!-- Input for movie_duration end -->
+  </div>
+  <!-- Label and input for movie_duration end -->
+
+  <!-- Label and input for movie_year start -->
+  <div class="form-group">
+    <%= f.label :movie_year %>
+
+    <!-- Input for movie_year start -->
+    <%= f.text_field :movie_year, class: "form-control" %>
+    <!-- Input for movie_year end -->
+  </div>
+  <!-- Label and input for movie_year end -->
+
+  <%= f.submit "Create movie", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

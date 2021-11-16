@@ -24,7 +24,12 @@ class BookmarkStatusesController < ApplicationController
     @bookmark_status = BookmarkStatus.new(bookmark_status_params)
 
     if @bookmark_status.save
-      redirect_to @bookmark_status, notice: 'Bookmark status was successfully created.'
+      message = 'BookmarkStatus was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @bookmark_status, notice: message
+      end
     else
       render :new
     end

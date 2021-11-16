@@ -24,7 +24,12 @@ class ActorDetailsController < ApplicationController
     @actor_detail = ActorDetail.new(actor_detail_params)
 
     if @actor_detail.save
-      redirect_to @actor_detail, notice: 'Actor detail was successfully created.'
+      message = 'ActorDetail was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @actor_detail, notice: message
+      end
     else
       render :new
     end

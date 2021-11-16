@@ -24,7 +24,12 @@ class ReviewDetailsController < ApplicationController
     @review_detail = ReviewDetail.new(review_detail_params)
 
     if @review_detail.save
-      redirect_to @review_detail, notice: 'Review detail was successfully created.'
+      message = 'ReviewDetail was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @review_detail, notice: message
+      end
     else
       render :new
     end
