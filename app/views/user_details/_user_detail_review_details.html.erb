@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Review Details
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @user_detail.review_details.each do |review_detail| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/review_details/<%= review_detail.id %>">
+          <%= review_detail %>
+        </a>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>
