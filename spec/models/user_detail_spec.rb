@@ -10,6 +10,8 @@ RSpec.describe UserDetail, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:bookmark_statuses) }
+
     end
 
     describe "Validations" do

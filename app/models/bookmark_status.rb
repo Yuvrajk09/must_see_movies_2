@@ -6,6 +6,10 @@ class BookmarkStatus < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :movie,
+             :through => :bookmark,
+             :source => :movie
+
   # Validations
 
   # Scopes
