@@ -3,7 +3,7 @@ class BookmarkStatusesController < ApplicationController
 
   # GET /bookmark_statuses
   def index
-    @bookmark_statuses = BookmarkStatus.all
+    @bookmark_statuses = BookmarkStatus.page(params[:page]).per(10)
   end
 
   # GET /bookmark_statuses/1
