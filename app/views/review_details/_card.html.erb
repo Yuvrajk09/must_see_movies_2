@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Review</dt>
       <!-- Display review_id start -->
-      <dd><%= review_detail.review_id %></dd>
+      <dd>
+        <% if @review_detail.reviews.present? %>
+          <%= link_to review_detail.reviews, review_detail.reviews %>
+        <% end %>
+      </dd>
       <!-- Display review_id end -->
 
       <dt>Review</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Actor</dt>
       <!-- Display actor_id start -->
-      <dd><%= actor_detail.actor_id %></dd>
+      <dd>
+        <% if @actor_detail.actors.present? %>
+          <%= link_to actor_detail.actors, actor_detail.actors %>
+        <% end %>
+      </dd>
       <!-- Display actor_id end -->
 
       <dt>Actor name</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Director</dt>
       <!-- Display director_id start -->
-      <dd><%= director_detail.director_id %></dd>
+      <dd>
+        <% if @director_detail.director.present? %>
+          <%= link_to director_detail.director, director_detail.director %>
+        <% end %>
+      </dd>
       <!-- Display director_id end -->
 
       <dt>Director name</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Movie</dt>
       <!-- Display movie_id start -->
-      <dd><%= movie.movie_id %></dd>
+      <dd>
+        <% if @movie.movie.present? %>
+          <%= link_to movie.movie, movie.movie %>
+        <% end %>
+      </dd>
       <!-- Display movie_id end -->
 
       <dt>Movie name</dt>
