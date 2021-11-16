@@ -7,6 +7,10 @@ class UserDetail < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :review_details,
+             :through => :movies,
+             :source => :review_details
+
   has_many   :bookmark_statuses,
              :through => :movies,
              :source => :bookmark_statuses

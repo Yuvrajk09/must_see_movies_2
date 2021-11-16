@@ -10,6 +10,8 @@ RSpec.describe ReviewDetail, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:movie) }
+
     end
 
     describe "Validations" do
