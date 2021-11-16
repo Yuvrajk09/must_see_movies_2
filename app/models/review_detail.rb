@@ -1,6 +1,10 @@
 class ReviewDetail < ApplicationRecord
   # Direct associations
 
+  belongs_to :reviews,
+             :class_name => "Movie",
+             :foreign_key => "review_id"
+
   # Indirect associations
 
   # Validations
