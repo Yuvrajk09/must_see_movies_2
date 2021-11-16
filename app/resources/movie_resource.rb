@@ -10,6 +10,9 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :review_details,
+             foreign_key: :review_id
+
   has_many   :actor_details,
              foreign_key: :actor_id
 

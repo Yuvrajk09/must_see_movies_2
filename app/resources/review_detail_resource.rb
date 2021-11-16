@@ -8,6 +8,10 @@ class ReviewDetailResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :reviews,
+             resource: MovieResource,
+             foreign_key: :review_id
+
   # Indirect associations
 
 end
