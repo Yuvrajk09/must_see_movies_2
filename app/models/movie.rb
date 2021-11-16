@@ -1,6 +1,9 @@
 class Movie < ApplicationRecord
   # Direct associations
 
+  belongs_to :movie,
+             :class_name => "UserDetail"
+
   # Indirect associations
 
   # Validations

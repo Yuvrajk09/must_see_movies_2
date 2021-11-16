@@ -1,6 +1,10 @@
 class UserDetail < ApplicationRecord
   # Direct associations
 
+  has_many   :movies,
+             :foreign_key => "movie_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
