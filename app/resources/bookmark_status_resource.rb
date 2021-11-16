@@ -7,6 +7,9 @@ class BookmarkStatusResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :bookmark,
+             resource: MovieResource
+
   # Indirect associations
 
 end
