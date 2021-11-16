@@ -13,7 +13,7 @@ class Api::V1::ActorDetailsController < Api::V1::GraphitiController
     actor_detail = ActorDetailResource.build(params)
 
     if actor_detail.save
-      render jsonapi: actor_detail, status: 201
+      render jsonapi: actor_detail, status: :created
     else
       render jsonapi_errors: actor_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::ActorDetailsController < Api::V1::GraphitiController
     actor_detail = ActorDetailResource.find(params)
 
     if actor_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: actor_detail
     end

@@ -13,7 +13,7 @@ class Api::V1::UserDetailsController < Api::V1::GraphitiController
     user_detail = UserDetailResource.build(params)
 
     if user_detail.save
-      render jsonapi: user_detail, status: 201
+      render jsonapi: user_detail, status: :created
     else
       render jsonapi_errors: user_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::UserDetailsController < Api::V1::GraphitiController
     user_detail = UserDetailResource.find(params)
 
     if user_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: user_detail
     end

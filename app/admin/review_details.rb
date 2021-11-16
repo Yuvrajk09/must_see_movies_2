@@ -1,6 +1,5 @@
 ActiveAdmin.register ReviewDetail do
-
- permit_params :review_id, :review, :star_ratings
+  permit_params :review_id, :review, :star_ratings
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register ReviewDetail do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

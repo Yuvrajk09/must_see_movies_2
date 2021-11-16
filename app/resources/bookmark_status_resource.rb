@@ -17,7 +17,7 @@ class BookmarkStatusResource < ApplicationResource
 
   filter :movie_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:movie).where(:movies => {:movie_id => value})
+      scope.eager_load(:movie).where(movies: { movie_id: value })
     end
   end
 end

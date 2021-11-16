@@ -1,6 +1,6 @@
 ActiveAdmin.register DirectorDetail do
-
- permit_params :director_id, :director_name, :director_dob, :director_bio, :director_image
+  permit_params :director_id, :director_name, :director_dob, :director_bio,
+                :director_image
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +14,4 @@ ActiveAdmin.register DirectorDetail do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

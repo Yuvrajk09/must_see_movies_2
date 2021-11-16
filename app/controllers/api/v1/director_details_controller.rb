@@ -13,7 +13,7 @@ class Api::V1::DirectorDetailsController < Api::V1::GraphitiController
     director_detail = DirectorDetailResource.build(params)
 
     if director_detail.save
-      render jsonapi: director_detail, status: 201
+      render jsonapi: director_detail, status: :created
     else
       render jsonapi_errors: director_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::DirectorDetailsController < Api::V1::GraphitiController
     director_detail = DirectorDetailResource.find(params)
 
     if director_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: director_detail
     end

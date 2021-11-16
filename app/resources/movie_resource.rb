@@ -26,5 +26,4 @@ class MovieResource < ApplicationResource
              resource: UserDetailResource
 
   # Indirect associations
-
 end

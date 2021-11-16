@@ -13,7 +13,7 @@ class Api::V1::ReviewDetailsController < Api::V1::GraphitiController
     review_detail = ReviewDetailResource.build(params)
 
     if review_detail.save
-      render jsonapi: review_detail, status: 201
+      render jsonapi: review_detail, status: :created
     else
       render jsonapi_errors: review_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::ReviewDetailsController < Api::V1::GraphitiController
     review_detail = ReviewDetailResource.find(params)
 
     if review_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: review_detail
     end

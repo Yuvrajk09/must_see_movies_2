@@ -1,15 +1,15 @@
 class BookmarkStatusesController < ApplicationController
-  before_action :set_bookmark_status, only: [:show, :edit, :update, :destroy]
+  before_action :set_bookmark_status, only: %i[show edit update destroy]
 
   # GET /bookmark_statuses
   def index
     @q = BookmarkStatus.ransack(params[:q])
-    @bookmark_statuses = @q.result(:distinct => true).includes(:bookmark, :movie).page(params[:page]).per(10)
+    @bookmark_statuses = @q.result(distinct: true).includes(:bookmark,
+                                                            :movie).page(params[:page]).per(10)
   end
 
   # GET /bookmark_statuses/1
-  def show
-  end
+  def show; end
 
   # GET /bookmark_statuses/new
   def new
@@ -17,17 +17,16 @@ class BookmarkStatusesController < ApplicationController
   end
 
   # GET /bookmark_statuses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /bookmark_statuses
   def create
     @bookmark_status = BookmarkStatus.new(bookmark_status_params)
 
     if @bookmark_status.save
-      message = 'BookmarkStatus was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "BookmarkStatus was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @bookmark_status, notice: message
       end
@@ -39,7 +38,8 @@ class BookmarkStatusesController < ApplicationController
   # PATCH/PUT /bookmark_statuses/1
   def update
     if @bookmark_status.update(bookmark_status_params)
-      redirect_to @bookmark_status, notice: 'Bookmark status was successfully updated.'
+      redirect_to @bookmark_status,
+                  notice: "Bookmark status was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,22 @@ class BookmarkStatusesController < ApplicationController
   def destroy
     @bookmark_status.destroy
     message = "BookmarkStatus was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to bookmark_statuses_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bookmark_status
-      @bookmark_status = BookmarkStatus.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def bookmark_status_params
-      params.require(:bookmark_status).permit(:bookmark_id, :bookmark_status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bookmark_status
+    @bookmark_status = BookmarkStatus.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def bookmark_status_params
+    params.require(:bookmark_status).permit(:bookmark_id, :bookmark_status)
+  end
 end

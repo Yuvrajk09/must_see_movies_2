@@ -1,15 +1,15 @@
 class ReviewDetailsController < ApplicationController
-  before_action :set_review_detail, only: [:show, :edit, :update, :destroy]
+  before_action :set_review_detail, only: %i[show edit update destroy]
 
   # GET /review_details
   def index
     @q = ReviewDetail.ransack(params[:q])
-    @review_details = @q.result(:distinct => true).includes(:reviews, :movie).page(params[:page]).per(10)
+    @review_details = @q.result(distinct: true).includes(:reviews,
+                                                         :movie).page(params[:page]).per(10)
   end
 
   # GET /review_details/1
-  def show
-  end
+  def show; end
 
   # GET /review_details/new
   def new
@@ -17,17 +17,16 @@ class ReviewDetailsController < ApplicationController
   end
 
   # GET /review_details/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /review_details
   def create
     @review_detail = ReviewDetail.new(review_detail_params)
 
     if @review_detail.save
-      message = 'ReviewDetail was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "ReviewDetail was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @review_detail, notice: message
       end
@@ -39,7 +38,8 @@ class ReviewDetailsController < ApplicationController
   # PATCH/PUT /review_details/1
   def update
     if @review_detail.update(review_detail_params)
-      redirect_to @review_detail, notice: 'Review detail was successfully updated.'
+      redirect_to @review_detail,
+                  notice: "Review detail was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,22 @@ class ReviewDetailsController < ApplicationController
   def destroy
     @review_detail.destroy
     message = "ReviewDetail was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to review_details_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review_detail
-      @review_detail = ReviewDetail.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def review_detail_params
-      params.require(:review_detail).permit(:review_id, :review, :star_ratings)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review_detail
+    @review_detail = ReviewDetail.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def review_detail_params
+    params.require(:review_detail).permit(:review_id, :review, :star_ratings)
+  end
 end

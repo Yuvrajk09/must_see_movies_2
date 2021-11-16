@@ -15,5 +15,4 @@ class ActorDetailResource < ApplicationResource
              foreign_key: :actor_id
 
   # Indirect associations
-
 end

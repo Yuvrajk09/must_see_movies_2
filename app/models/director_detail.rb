@@ -2,7 +2,7 @@ class DirectorDetail < ApplicationRecord
   # Direct associations
 
   belongs_to :director,
-             :class_name => "Movie"
+             class_name: "Movie"
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class DirectorDetail < ApplicationRecord
   def to_s
     director.to_s
   end
-
 end
