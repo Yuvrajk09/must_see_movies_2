@@ -1,6 +1,9 @@
 class BookmarkStatus < ApplicationRecord
   # Direct associations
 
+  belongs_to :bookmark,
+             :class_name => "Movie"
+
   # Indirect associations
 
   # Validations

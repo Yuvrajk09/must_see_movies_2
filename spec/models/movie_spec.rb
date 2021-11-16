@@ -4,6 +4,8 @@ RSpec.describe Movie, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:bookmark_statuses) }
+
     it { should have_many(:review_details) }
 
     it { should have_many(:actor_details) }
