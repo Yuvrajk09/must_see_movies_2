@@ -16,7 +16,7 @@
 
     <%= f.label :bookmark_id %>
     <!-- Input for bookmark_id start -->
-    <%= f.number_field :bookmark_id, class: bookmark_class, placeholder: "Enter bookmark" %>
+    <%= f.collection_select :bookmark_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for bookmark_id end -->
     <% if bookmark_was_invalid %>
       <% bookmark_status.errors.full_messages_for(:bookmark).each do |message| %>
