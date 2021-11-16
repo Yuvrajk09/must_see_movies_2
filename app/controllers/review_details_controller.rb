@@ -1,25 +1,20 @@
 class ReviewDetailsController < ApplicationController
   before_action :set_review_detail, only: %i[show edit update destroy]
 
-  # GET /review_details
   def index
     @q = ReviewDetail.ransack(params[:q])
     @review_details = @q.result(distinct: true).includes(:reviews,
                                                          :movie).page(params[:page]).per(10)
   end
 
-  # GET /review_details/1
   def show; end
 
-  # GET /review_details/new
   def new
     @review_detail = ReviewDetail.new
   end
 
-  # GET /review_details/1/edit
   def edit; end
 
-  # POST /review_details
   def create
     @review_detail = ReviewDetail.new(review_detail_params)
 
@@ -35,7 +30,6 @@ class ReviewDetailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /review_details/1
   def update
     if @review_detail.update(review_detail_params)
       redirect_to @review_detail,
@@ -45,7 +39,6 @@ class ReviewDetailsController < ApplicationController
     end
   end
 
-  # DELETE /review_details/1
   def destroy
     @review_detail.destroy
     message = "ReviewDetail was successfully deleted."
@@ -58,12 +51,10 @@ class ReviewDetailsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_review_detail
     @review_detail = ReviewDetail.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def review_detail_params
     params.require(:review_detail).permit(:review_id, :review, :star_ratings)
   end

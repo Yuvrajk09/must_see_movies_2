@@ -1,24 +1,19 @@
 class DirectorDetailsController < ApplicationController
   before_action :set_director_detail, only: %i[show edit update destroy]
 
-  # GET /director_details
   def index
     @q = DirectorDetail.ransack(params[:q])
     @director_details = @q.result(distinct: true).includes(:director).page(params[:page]).per(10)
   end
 
-  # GET /director_details/1
   def show; end
 
-  # GET /director_details/new
   def new
     @director_detail = DirectorDetail.new
   end
 
-  # GET /director_details/1/edit
   def edit; end
 
-  # POST /director_details
   def create
     @director_detail = DirectorDetail.new(director_detail_params)
 
@@ -30,7 +25,6 @@ class DirectorDetailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /director_details/1
   def update
     if @director_detail.update(director_detail_params)
       redirect_to @director_detail,
@@ -40,7 +34,6 @@ class DirectorDetailsController < ApplicationController
     end
   end
 
-  # DELETE /director_details/1
   def destroy
     @director_detail.destroy
     redirect_to director_details_url,
@@ -49,12 +42,10 @@ class DirectorDetailsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_director_detail
     @director_detail = DirectorDetail.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def director_detail_params
     params.require(:director_detail).permit(:director_id, :director_name,
                                             :director_dob, :director_bio, :director_image)
