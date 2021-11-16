@@ -4,6 +4,8 @@ RSpec.describe Movie, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:actor_details) }
+
     it { should have_one(:director_detail) }
 
     it { should belong_to(:movie) }
