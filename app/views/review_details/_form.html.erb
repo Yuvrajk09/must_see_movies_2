@@ -1,0 +1,83 @@
+<% was_validated = review_detail.errors.any? %>
+
+<%= form_with(model: review_detail, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for review_id start -->
+  <div class="form-group">
+    <% review_class = "form-control" %>
+    <% review_was_invalid = review_detail.errors.include?(:review) %>
+
+    <% if was_validated %>
+      <% if review_was_invalid %>
+        <% review_class << " is-invalid" %>
+      <% else %>
+        <% review_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :review_id %>
+    <!-- Input for review_id start -->
+    <%= f.number_field :review_id, class: review_class, placeholder: "Enter review" %>
+    <!-- Input for review_id end -->
+    <% if review_was_invalid %>
+      <% review_detail.errors.full_messages_for(:review).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for review_id end -->
+  <!-- Label and input for review start -->
+  <div class="form-group">
+    <% review_class = "form-control" %>
+    <% review_was_invalid = review_detail.errors.include?(:review) %>
+
+    <% if was_validated %>
+      <% if review_was_invalid %>
+        <% review_class << " is-invalid" %>
+      <% else %>
+        <% review_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :review %>
+    <!-- Input for review start -->
+    <%= f.text_field :review, class: review_class, placeholder: "Enter review" %>
+    <!-- Input for review end -->
+    <% if review_was_invalid %>
+      <% review_detail.errors.full_messages_for(:review).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for review end -->
+  <!-- Label and input for star_ratings start -->
+  <div class="form-group">
+    <% star_rating_class = "form-control" %>
+    <% star_rating_was_invalid = review_detail.errors.include?(:star_rating) %>
+
+    <% if was_validated %>
+      <% if star_rating_was_invalid %>
+        <% star_rating_class << " is-invalid" %>
+      <% else %>
+        <% star_rating_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :star_ratings %>
+    <!-- Input for star_ratings start -->
+    <%= f.text_field :star_ratings, class: star_rating_class, placeholder: "Enter star rating" %>
+    <!-- Input for star_ratings end -->
+    <% if star_rating_was_invalid %>
+      <% review_detail.errors.full_messages_for(:star_rating).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for star_ratings end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
