@@ -1,7 +1,6 @@
 <% was_validated = director_detail.errors.any? %>
 
 <%= form_with(model: director_detail, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for director_id start -->
   <div class="form-group">
     <% director_class = "form-control" %>
     <% director_was_invalid = director_detail.errors.include?(:director) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :director_id %>
-    <!-- Input for director_id start -->
     <%= f.collection_select :director_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for director_id end -->
     <% if director_was_invalid %>
       <% director_detail.errors.full_messages_for(:director).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for director_id end -->
-  <!-- Label and input for director_name start -->
   <div class="form-group">
     <% director_name_class = "form-control" %>
     <% director_name_was_invalid = director_detail.errors.include?(:director_name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :director_name %>
-    <!-- Input for director_name start -->
     <%= f.text_field :director_name, class: director_name_class, placeholder: "Enter director name" %>
-    <!-- Input for director_name end -->
     <% if director_name_was_invalid %>
       <% director_detail.errors.full_messages_for(:director_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for director_name end -->
-  <!-- Label and input for director_dob start -->
   <div class="form-group">
     <% director_dob_class = "form-control" %>
     <% director_dob_was_invalid = director_detail.errors.include?(:director_dob) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :director_dob %>
-    <!-- Input for director_dob start -->
     <%= f.text_field :director_dob, class: director_dob_class, placeholder: "Enter director dob" %>
-    <!-- Input for director_dob end -->
     <% if director_dob_was_invalid %>
       <% director_detail.errors.full_messages_for(:director_dob).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for director_dob end -->
-  <!-- Label and input for director_bio start -->
   <div class="form-group">
     <% director_bio_class = "form-control" %>
     <% director_bio_was_invalid = director_detail.errors.include?(:director_bio) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :director_bio %>
-    <!-- Input for director_bio start -->
     <%= f.text_field :director_bio, class: director_bio_class, placeholder: "Enter director bio" %>
-    <!-- Input for director_bio end -->
     <% if director_bio_was_invalid %>
       <% director_detail.errors.full_messages_for(:director_bio).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for director_bio end -->
-  <!-- Label and input for director_image start -->
   <div class="form-group">
     <% director_image_class = "form-control" %>
     <% director_image_was_invalid = director_detail.errors.include?(:director_image) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :director_image %>
-    <!-- Input for director_image start -->
     <%= f.text_field :director_image, class: director_image_class, placeholder: "Enter director image" %>
-    <!-- Input for director_image end -->
     <% if director_image_was_invalid %>
       <% director_detail.errors.full_messages_for(:director_image).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for director_image end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

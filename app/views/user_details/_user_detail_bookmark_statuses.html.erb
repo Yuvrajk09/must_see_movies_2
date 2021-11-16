@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @user_detail.bookmark_statuses.each do |bookmark_status| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/bookmark_statuses/<%= bookmark_status.id %>">
           <%= bookmark_status %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>

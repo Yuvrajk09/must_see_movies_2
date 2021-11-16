@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @review_detail.movie.each do |user_detail| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/user_details/<%= user_detail.id %>">
           <%= user_detail %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>

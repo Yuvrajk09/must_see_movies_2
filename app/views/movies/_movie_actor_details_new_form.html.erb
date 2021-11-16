@@ -1,52 +1,30 @@
-<!-- Form actor_detail start -->
 <%= form_with(model: @actor_detail, local: true) do |f| %>
-<!-- Form actor_detail end -->
 
-  <!-- Label and input for actor_id start -->
-  <!-- Input for actor_id start -->
   <%= f.hidden_field :actor_id, value: @movie.id %>
-  <!-- Input for actor_id end -->
-  <!-- Label and input for actor_id end -->
 
-  <!-- Label and input for actor_name start -->
   <div class="form-group">
     <%= f.label :actor_name %>
 
-    <!-- Input for actor_name start -->
     <%= f.text_field :actor_name, class: "form-control" %>
-    <!-- Input for actor_name end -->
   </div>
-  <!-- Label and input for actor_name end -->
 
-  <!-- Label and input for actor_dob start -->
   <div class="form-group">
     <%= f.label :actor_dob %>
 
-    <!-- Input for actor_dob start -->
     <%= f.text_field :actor_dob, class: "form-control" %>
-    <!-- Input for actor_dob end -->
   </div>
-  <!-- Label and input for actor_dob end -->
 
-  <!-- Label and input for actor_bio start -->
   <div class="form-group">
     <%= f.label :actor_bio %>
 
-    <!-- Input for actor_bio start -->
     <%= f.text_field :actor_bio, class: "form-control" %>
-    <!-- Input for actor_bio end -->
   </div>
-  <!-- Label and input for actor_bio end -->
 
-  <!-- Label and input for actor_image start -->
   <div class="form-group">
     <%= f.label :actor_image %>
 
-    <!-- Input for actor_image start -->
     <%= f.text_field :actor_image, class: "form-control" %>
-    <!-- Input for actor_image end -->
   </div>
-  <!-- Label and input for actor_image end -->
 
   <%= f.submit "Create actor detail", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

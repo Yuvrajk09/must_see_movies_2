@@ -6,33 +6,23 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Director</dt>
-      <!-- Display director_id start -->
       <dd>
         <% if @director_detail.director.present? %>
           <%= link_to director_detail.director, director_detail.director %>
         <% end %>
       </dd>
-      <!-- Display director_id end -->
 
       <dt>Director name</dt>
-      <!-- Display director_name start -->
       <dd><%= director_detail.director_name %></dd>
-      <!-- Display director_name end -->
 
       <dt>Director dob</dt>
-      <!-- Display director_dob start -->
       <dd><%= director_detail.director_dob %></dd>
-      <!-- Display director_dob end -->
 
       <dt>Director bio</dt>
-      <!-- Display director_bio start -->
       <dd><%= director_detail.director_bio %></dd>
-      <!-- Display director_bio end -->
 
       <dt>Director image</dt>
-      <!-- Display director_image start -->
       <dd><%= director_detail.director_image %></dd>
-      <!-- Display director_image end -->
 
     </dl>
 
@@ -41,21 +31,17 @@
         <%= link_to_show_or_back director_detail, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link director_detail start -->
       <div class="col">
         <%= link_to edit_director_detail_url(director_detail), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link director_detail end -->
 
-      <!-- Delete link director_detail start -->
       <div class="col">
         <%= link_to director_detail, method: :delete, data: { confirm: "Do you really want to delete this director_detail?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link director_detail end -->
     </div>
   </div>
 
