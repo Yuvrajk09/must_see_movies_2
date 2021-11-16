@@ -16,7 +16,7 @@
 
     <%= f.label :review_id %>
     <!-- Input for review_id start -->
-    <%= f.number_field :review_id, class: review_class, placeholder: "Enter review" %>
+    <%= f.collection_select :review_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for review_id end -->
     <% if review_was_invalid %>
       <% review_detail.errors.full_messages_for(:review).each do |message| %>
