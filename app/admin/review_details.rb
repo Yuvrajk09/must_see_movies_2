@@ -1,5 +1,7 @@
 ActiveAdmin.register ReviewDetail do
 
+ permit_params :review_id, :review, :star_ratings
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
