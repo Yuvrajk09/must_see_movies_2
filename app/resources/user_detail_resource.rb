@@ -9,6 +9,9 @@ class UserDetailResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :movies,
+             foreign_key: :movie_id
+
   # Indirect associations
 
 end
