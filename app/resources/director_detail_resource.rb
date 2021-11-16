@@ -10,6 +10,9 @@ class DirectorDetailResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :director,
+             resource: MovieResource
+
   # Indirect associations
 
 end

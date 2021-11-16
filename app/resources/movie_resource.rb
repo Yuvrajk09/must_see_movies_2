@@ -10,6 +10,9 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
+  has_one    :director_detail,
+             foreign_key: :director_id
+
   belongs_to :movie,
              resource: UserDetailResource
 
