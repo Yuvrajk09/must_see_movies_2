@@ -14,6 +14,14 @@ class UserDetailResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :review_details do
+    assign_each do |user_detail, review_details|
+      review_details.select do |r|
+        r.id.in?(user_detail.review_details.map(&:id))
+      end
+    end
+  end
+
   has_many :bookmark_statuses do
     assign_each do |user_detail, bookmark_statuses|
       bookmark_statuses.select do |b|
